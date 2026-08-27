@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-primary: #FAFAF7;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F4F4F0;
+    --text-main: #18181B;
+    --text-muted: #52525B;
+    --text-faint: #71717A;
+    --border-color: #E4E4E7;
+    --accent-saffron: #FF6B35;
+    --accent-saffron-light: #FFF0EB;
+    --accent-saffron-dark: #E0531D;
+    --status-success: #15803D;
+    --status-success-bg: #DCFCE7;
+    --status-danger: #DC2626;
+    --status-danger-bg: #FEE2E2;
+    --status-warning: #D97706;
+    --status-warning-bg: #FEF3C7;
+    --font-scale: 1.05rem; /* Increased default comfort font scale */
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-size: var(--font-scale);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* High Contrast Mode (WCAG AAA) */
+  body.high-contrast {
+    --bg-primary: #000000 !important;
+    --bg-surface: #121212 !important;
+    --bg-subtle: #1E1E1E !important;
+    --text-main: #FFFFFF !important;
+    --text-muted: #E0E0E0 !important;
+    --text-faint: #BDBDBD !important;
+    --border-color: #FFFF00 !important;
+    --accent-saffron: #FFB300 !important;
+    --accent-saffron-light: #332600 !important;
+    --status-success: #00FF66 !important;
+    --status-danger: #FF3333 !important;
+    --status-warning: #FFFF00 !important;
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+  }
+
+  body.high-contrast * {
+    border-color: #FFFF00 !important;
+  }
+
+  body.high-contrast .bg-white,
+  body.high-contrast .bg-zinc-50,
+  body.high-contrast .bg-zinc-100,
+  body.high-contrast .bg-slate-50,
+  body.high-contrast .bg-slate-100,
+  body.high-contrast .bg-orange-50,
+  body.high-contrast .bg-emerald-50,
+  body.high-contrast .bg-amber-50,
+  body.high-contrast .bg-red-50 {
+    background-color: #121212 !important;
+    color: #FFFFFF !important;
+  }
+
+  body.high-contrast .text-zinc-900,
+  body.high-contrast .text-zinc-800,
+  body.high-contrast .text-zinc-700,
+  body.high-contrast .text-zinc-600 {
+    color: #FFFFFF !important;
+  }
+
+  body.high-contrast input,
+  body.high-contrast textarea,
+  body.high-contrast select {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #FFFF00 !important;
+  }
+
+  /* Enhanced Font Scaling Modes */
+  body.font-large {
+    --font-scale: 1.2rem;
+    font-size: 1.2rem !important;
+  }
+
+  body.font-large * {
+    font-size: calc(100% * 1.15);
+  }
+
+  body.font-xlarge {
+    --font-scale: 1.35rem;
+    font-size: 1.35rem !important;
+  }
+
+  body.font-xlarge * {
+    font-size: calc(100% * 1.3);
+  }
+
+  /* Dyslexia Mode */
+  body.dyslexia-font,
+  body.dyslexia-font * {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', 'Arial', sans-serif !important;
+    letter-spacing: 0.04em !important;
+    word-spacing: 0.08em !important;
+    line-height: 1.8 !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F4F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4D4D8;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A1A1AA;
 }
